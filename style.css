@@ -219,6 +219,77 @@ section div:hover p {
 }
 
 /* =============================================
+   3-COLUMN CONTENT SECTION (Bootstrap Grid)
+   ============================================= */
+.content-section {
+  display: block !important;
+  padding: 60px 50px 80px !important;
+  overflow-x: visible !important;
+  scroll-snap-type: none !important;
+  background-color: var(--intel-dark-blue);
+}
+
+.content-section .row {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.content-section .col-sm-4 {
+  flex: 1;
+  transition: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 174, 239, 0.2);
+  border-radius: 8px;
+  padding: 24px !important;
+  min-height: auto;
+}
+
+.content-section .col-sm-4 h2 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--intel-light-blue);
+  margin-bottom: 12px;
+}
+
+.content-section .col-sm-4 p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+  max-height: none;
+  opacity: 1;
+}
+
+.content-section .col-sm-4 a {
+  display: inline-block;
+  color: var(--intel-light-blue);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.content-section .col-sm-4 a:hover {
+  text-decoration: underline;
+}
+
+/* No transition class - prevents transforms and shadows */
+.no-transition {
+  transition: none !important;
+}
+
+.no-transition:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* =============================================
    SCROLL HINT TEXT
    ============================================= */
 body > p {
@@ -272,5 +343,16 @@ body > p {
 
   section div:hover {
     transform: none;
+  }
+
+  /* 3-Column Content Section - Stack vertically on mobile */
+  .content-section .row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .content-section .col-sm-4 {
+    width: 100%;
+    flex: 0 0 auto;
   }
 }
