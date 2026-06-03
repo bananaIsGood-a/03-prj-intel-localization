@@ -147,19 +147,25 @@
       
       <!-- Column 1 -->
       <div class="col-sm-4 no-transition">
-        <h2>RISE Strategy</h2>
+        <div class="column-header">
+          <img src="img/bar-chart-line.svg" alt="RISE Strategy" class="column-icon" />
+          <h2>RISE Strategy</h2>
+        </div>
         <p>
           Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, 
           Intel sets ambitious 2030 goals, including driving industry-wide 
           progress on climate action, water stewardship, and waste reduction.
         </p>
         <!-- Learn More Button -->
-        <a href="#">Learn More</a>
+        <button class="btn-learn-more" onclick="location.href='#'">Learn More</button>
       </div>
 
       <!-- Column 2 -->
       <div class="col-sm-4 no-transition">
-        <h2>Commitment</h2>
+        <div class="column-header">
+          <img src="img/globe.svg" alt="Commitment" class="column-icon" />
+          <h2>Commitment</h2>
+        </div>
         <p>
           In 2022, Intel pledged to achieve net-zero greenhouse gas emissions 
           (Scope 1 and 2) by 2040. This commitment builds on decades of 
@@ -167,12 +173,15 @@
           industry.
         </p>
         <!-- Learn More Button -->
-        <a href="#">Learn More</a>
+        <button class="btn-learn-more" onclick="location.href='#'">Learn More</button>
       </div>
 
       <!-- Column 3 -->
       <div class="col-sm-4 no-transition">
-        <h2>Water &amp; Waste</h2>
+        <div class="column-header">
+          <img src="img/droplet.svg" alt="Water & Waste" class="column-icon" />
+          <h2>Water &amp; Waste</h2>
+        </div>
         <p>
           Intel conserves billions of gallons of water annually and 
           collaborates with local communities to restore watersheds.
@@ -180,16 +189,83 @@
           advance a circular economy.
         </p>
         <!-- Learn More Button -->
-        <a href="#">Learn More</a>
+        <button class="btn-learn-more" onclick="location.href='#'">Learn More</button>
       </div>
 
     </div>
   </section>
 
   <!-- Subscription Form -->
-  <section>
-    <h2>Subscribe to our Newsletter</h2>
-    <!-- Add form here -->
+  <section class="subscription-section">
+    <div class="subscription-container">
+      <div class="subscription-header">
+        <img src="img/envelope.svg" alt="Newsletter" class="subscription-icon" />
+        <h2>Subscribe to our Newsletter</h2>
+      </div>
+      <p class="subscription-description">Stay updated on Intel's latest sustainability initiatives and innovations.</p>
+      
+      <!-- Bootstrap Form -->
+      <form class="subscription-form">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="First Name" required />
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Last Name" required />
+          </div>
+          <div class="col-12">
+            <input type="email" class="form-control" placeholder="Email Address" required />
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terms" required />
+              <label class="form-check-label" for="terms">
+                I agree to receive promotional emails from Intel
+              </label>
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn-subscribe">Subscribe</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Intel</h3>
+          <p>Intel is committed to building world-class semiconductor products and sustainable manufacturing practices.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Sustainability Report</a></li>
+            <li><a href="#">News &amp; Events</a></li>
+            <li><a href="#">Investor Relations</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Intel Corporation. All rights reserved. | Sustainability Through Innovation</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

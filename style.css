@@ -249,12 +249,36 @@ section div:hover p {
   min-height: auto;
 }
 
+/* Hover effect for 3-column cards */
+.content-section .col-sm-4:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 174, 239, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 104, 181, 0.3);
+}
+
+/* Column header with icon */
+.column-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* Column icons */
+.column-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+
 .content-section .col-sm-4 h2 {
   font-family: 'Rajdhani', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--intel-light-blue);
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .content-section .col-sm-4 p {
@@ -266,16 +290,28 @@ section div:hover p {
   opacity: 1;
 }
 
-.content-section .col-sm-4 a {
+/* Learn More Button */
+.btn-learn-more {
   display: inline-block;
-  color: var(--intel-light-blue);
-  text-decoration: none;
+  padding: 10px 24px;
+  background: var(--intel-light-blue);
+  color: var(--intel-dark-blue);
+  border: none;
+  border-radius: 6px;
   font-weight: 600;
-  margin-top: 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 }
 
-.content-section .col-sm-4 a:hover {
-  text-decoration: underline;
+.btn-learn-more:hover {
+  background: #0090c7;
+  color: var(--intel-white);
+}
+
+.btn-learn-more:active {
+  transform: scale(0.98);
 }
 
 /* No transition class - prevents transforms and shadows */
@@ -284,10 +320,195 @@ section div:hover p {
 }
 
 .no-transition:hover {
-  transform: none !important;
-  box-shadow: none !important;
-  background: rgba(255, 255, 255, 0.05) !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 8px 24px rgba(0, 104, 181, 0.3) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
 }
+
+/* =============================================
+   SUBSCRIPTION SECTION
+   ============================================= */
+.subscription-section {
+  background-color: var(--intel-dark-blue);
+  padding: 60px 50px;
+  text-align: center;
+}
+
+.subscription-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.subscription-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.subscription-icon {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1);
+}
+
+.subscription-section h2 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--intel-white);
+  margin-bottom: 0;
+  letter-spacing: 0.02em;
+}
+
+.subscription-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.subscription-form {
+  background: rgba(0, 104, 181, 0.15);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 174, 239, 0.25);
+}
+
+/* Bootstrap form control styling for subscription */
+.subscription-form .form-control {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 174, 239, 0.3);
+  color: var(--intel-white);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.subscription-form .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.subscription-form .form-control:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--intel-light-blue);
+  color: var(--intel-white);
+  box-shadow: 0 0 0 0.2rem rgba(0, 174, 239, 0.25);
+}
+
+.subscription-form .form-check-label {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.subscription-form .form-check-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 174, 239, 0.3);
+  accent-color: var(--intel-light-blue);
+}
+
+.subscription-form .form-check-input:checked {
+  background: var(--intel-light-blue);
+  border-color: var(--intel-light-blue);
+}
+
+/* Subscribe Button */
+.btn-subscribe {
+  width: 100%;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--intel-blue), var(--intel-light-blue));
+  color: var(--intel-white);
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-subscribe:hover {
+  background: linear-gradient(135deg, #00529f, #0090c7);
+  transform: translateY(-2px);
+}
+
+.btn-subscribe:active {
+  transform: translateY(0);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+  background: linear-gradient(135deg, var(--intel-dark-blue) 0%, #001f3d 100%);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 60px 50px 24px;
+  border-top: 1px solid rgba(0, 174, 239, 0.2);
+  margin-top: 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section h3 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--intel-white);
+  margin-bottom: 14px;
+  letter-spacing: 0.05em;
+}
+
+.footer-section p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: var(--intel-light-blue);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: var(--intel-white);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(0, 174, 239, 0.15);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* =============================================
+   RESPONSIVE — Footer on Mobile
+   ============================================= */
 
 /* =============================================
    SCROLL HINT TEXT
@@ -354,5 +575,58 @@ body > p {
   .content-section .col-sm-4 {
     width: 100%;
     flex: 0 0 auto;
+  }
+
+  .content-section .col-sm-4:hover {
+    transform: none;
+  }
+
+  /* Subscription Section on mobile */
+  .subscription-section {
+    padding: 40px 20px;
+  }
+
+  .subscription-container {
+    padding: 0;
+  }
+
+  .subscription-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .subscription-form {
+    padding: 20px;
+  }
+
+  .subscription-form .form-control {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  /* Footer on mobile */
+  .footer {
+    padding: 40px 20px 20px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-section h3 {
+    font-size: 1rem;
+  }
+
+  .footer-section p {
+    font-size: 0.85rem;
+  }
+
+  .footer-section a {
+    font-size: 0.85rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+    padding-top: 16px;
   }
 }
