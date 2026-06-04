@@ -25,6 +25,14 @@
   padding: 0;
 }
 
+html {
+  direction: ltr;
+}
+
+html[dir="rtl"] {
+  direction: rtl;
+}
+
 body {
   font-family: 'Source Sans 3', sans-serif;
   background-color: var(--intel-dark-blue);
@@ -95,7 +103,7 @@ header p {
 /* =============================================
    TIMELINE SECTION — Horizontal Scroll (Desktop)
    ============================================= */
-section {
+.timeline-section {
   display: flex;
   flex-direction: row;
   gap: 24px;
@@ -106,19 +114,19 @@ section {
   cursor: grab;
 }
 
-section:active {
+.timeline-section:active {
   cursor: grabbing;
 }
 
 /* Hide default scrollbar but keep it functional */
-section::-webkit-scrollbar {
+.timeline-section::-webkit-scrollbar {
   height: 6px;
 }
-section::-webkit-scrollbar-track {
+.timeline-section::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
-section::-webkit-scrollbar-thumb {
+.timeline-section::-webkit-scrollbar-thumb {
   background: var(--intel-light-blue);
   border-radius: 10px;
 }
@@ -126,7 +134,7 @@ section::-webkit-scrollbar-thumb {
 /* =============================================
    TIMELINE CARDS
    ============================================= */
-section div {
+.timeline-section div {
   flex: 0 0 var(--card-width);
   min-height: var(--card-height);
   background: linear-gradient(160deg, rgba(255,255,255,0.08) 0%, rgba(0,104,181,0.15) 100%);
@@ -145,7 +153,7 @@ section div {
 }
 
 /* Glowing top accent line */
-section div::before {
+.timeline-section div::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -155,7 +163,7 @@ section div::before {
 }
 
 /* Year label */
-section div h2 {
+.timeline-section div h2 {
   font-family: 'Rajdhani', sans-serif;
   font-size: 2.4rem;
   font-weight: 700;
@@ -165,7 +173,7 @@ section div h2 {
 }
 
 /* Milestone title */
-section div h3 {
+.timeline-section div h3 {
   font-family: 'Rajdhani', sans-serif;
   font-size: 1.05rem;
   font-weight: 600;
@@ -177,7 +185,7 @@ section div h3 {
 }
 
 /* Card image */
-section div img {
+.timeline-section div img {
   width: 100%;
   height: 130px;
   object-fit: cover;
@@ -188,7 +196,7 @@ section div img {
 }
 
 /* Description text — hidden until hover */
-section div p {
+.timeline-section div p {
   font-size: 0.88rem;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.75);
@@ -203,7 +211,7 @@ section div p {
 /* =============================================
    HOVER EFFECTS (Interactive Milestone Cards)
    ============================================= */
-section div:hover {
+.timeline-section div:hover {
   transform: translateY(-8px) scale(1.03);  /* CSS transform bonus! */
   box-shadow:
     0 12px 40px rgba(0, 104, 181, 0.45),
@@ -213,7 +221,7 @@ section div:hover {
 }
 
 /* Reveal description text on hover */
-section div:hover p {
+.timeline-section div:hover p {
   max-height: 200px;
   opacity: 1;
 }
@@ -233,15 +241,13 @@ section div:hover p {
   display: flex;
   flex-direction: row;
   gap: 24px;
-  margin-right: 0;
-  margin-left: 0;
+  margin-inline: 0;
 }
 
 .content-section .col-sm-4 {
   flex: 1;
   transition: none !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding-inline: 0 !important;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(0, 174, 239, 0.2);
   border-radius: 8px;
@@ -249,12 +255,14 @@ section div:hover p {
   min-height: auto;
 }
 
-/* Hover effect for 3-column cards */
-.content-section .col-sm-4:hover {
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(0, 174, 239, 0.4);
-  box-shadow: 0 8px 24px rgba(0, 104, 181, 0.3);
+/* Lines 252-258: Override the global section div:hover rule (line 206) for 3-column cards.
+   That rule applies to ALL divs inside any section, including these cards.
+   Resetting transform, box-shadow, background, and cursor prevents the glow and scale. */
+.content-section .col-sm-4 {
+  transform: none;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: default;
 }
 
 /* Column header with icon */
@@ -271,6 +279,17 @@ section div:hover p {
   height: 32px;
   filter: brightness(0) invert(1);
   flex-shrink: 0;
+}
+
+html[dir="rtl"] .column-header,
+html[dir="rtl"] .subscription-header {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .column-icon,
+html[dir="rtl"] .subscription-icon {
+  margin-inline-start: 0;
+  margin-inline-end: 12px;
 }
 
 .content-section .col-sm-4 h2 {
@@ -301,7 +320,7 @@ section div:hover p {
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: none; /* line 298: removed transition — no animations on the Learn More button in the 3-column section */
   text-decoration: none;
 }
 
@@ -319,24 +338,38 @@ section div:hover p {
   transition: none !important;
 }
 
-.no-transition:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 8px 24px rgba(0, 104, 181, 0.3) !important;
-  background: rgba(255, 255, 255, 0.12) !important;
-}
-
 /* =============================================
    SUBSCRIPTION SECTION
    ============================================= */
 .subscription-section {
+  /* Reset all styles inherited from the global `section` rule (line 98)
+     which was designed for the timeline and bleeds into this section */
+  display: block !important;        /* overrides flex from global section */
+  overflow-x: visible !important;   /* overrides overflow-x: auto */
+  scroll-snap-type: none !important;/* overrides scroll-snap */
+  cursor: default !important;       /* overrides cursor: grab */
+  gap: 0 !important;                /* overrides gap: 24px */
   background-color: var(--intel-dark-blue);
-  padding: 60px 50px;
+  padding: clamp(32px, 6vw, 60px) clamp(16px, 5vw, 50px);
   text-align: center;
 }
 
 .subscription-container {
-  max-width: 600px;
+  max-width: 900px;
+  width: 100% !important;
+  flex-shrink: 0 !important;
   margin: 0 auto;
+  padding: 0 clamp(8px, 3vw, 24px);
+}
+
+/* Lines 341-347: Override the global section div:hover rule (line 206) for the subscription container.
+   That rule matches this div too since it sits inside a <section>.
+   Resetting transform, box-shadow, background, and cursor prevents the glow and scale. */
+.subscription-container:hover {
+  transform: none;
+  box-shadow: none;
+  background: transparent;
+  cursor: default;
 }
 
 .subscription-header {
@@ -371,9 +404,24 @@ section div:hover p {
 
 .subscription-form {
   background: rgba(0, 104, 181, 0.15);
-  padding: 30px;
+  padding: clamp(16px, 4vw, 30px);
   border-radius: 12px;
   border: 1px solid rgba(0, 174, 239, 0.25);
+}
+
+/* Lines 386-392: Override section div:hover (line 206) for all inner divs of the subscription section.
+   Without this, every div inside .subscription-section (form, header, row, col) gets
+   the glow and scale on hover since they are all divs inside a <section>. */
+.subscription-section div:hover {
+  transform: none;
+  box-shadow: none;
+  background: transparent;
+  cursor: default;
+}
+
+/* Line 393: restore the form's own background after the broad override above sets it transparent */
+.subscription-form:hover {
+  background: rgba(0, 104, 181, 0.15);
 }
 
 /* Bootstrap form control styling for subscription */
@@ -383,7 +431,7 @@ section div:hover p {
   color: var(--intel-white);
   padding: 10px 14px;
   font-size: 0.95rem;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: none; /* line 384: removed transition — no animations on form inputs in the subscription section */
 }
 
 .subscription-form .form-control::placeholder {
@@ -400,7 +448,7 @@ section div:hover p {
 .subscription-form .form-check-label {
   color: rgba(255, 255, 255, 0.85);
   font-size: 0.9rem;
-  margin-left: 8px;
+  margin-inline-start: 8px;
 }
 
 .subscription-form .form-check-input {
@@ -425,7 +473,7 @@ section div:hover p {
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: none; /* line 426: removed transition — no animations on the Subscribe button in the subscription section */
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -542,7 +590,7 @@ body > p {
     width: 100px;
   }
 
-  section {
+  .timeline-section {
     flex-direction: column;  /* stack cards vertically on small screens */
     overflow-x: visible;
     overflow-y: visible;
@@ -550,19 +598,19 @@ body > p {
     scroll-snap-type: none;
   }
 
-  section div {
+  .timeline-section div {
     flex: 0 0 auto;
     width: 100%;
     min-height: auto;
   }
 
   /* Always show text on mobile (no hover on touch screens) */
-  section div:active p {
+  .timeline-section div:active p {
     max-height: 200px;
     opacity: 1;
   }
 
-  section div:hover {
+  .timeline-section div:hover {
     transform: none;
   }
 
@@ -581,27 +629,7 @@ body > p {
     transform: none;
   }
 
-  /* Subscription Section on mobile */
-  .subscription-section {
-    padding: 40px 20px;
-  }
-
-  .subscription-container {
-    padding: 0;
-  }
-
-  .subscription-section h2 {
-    font-size: 1.6rem;
-  }
-
-  .subscription-form {
-    padding: 20px;
-  }
-
-  .subscription-form .form-control {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
+  /* Subscription section — fluid via clamp(), no overrides needed */
 
   /* Footer on mobile */
   .footer {
