@@ -283,22 +283,25 @@
 
       function setPageDirection(isRtl) {
         const html = document.documentElement;
+        observer.disconnect();
         html.dir = isRtl ? 'rtl' : 'ltr';
         if (bootstrapLtr && bootstrapRtl) {
           bootstrapLtr.disabled = isRtl;
           bootstrapRtl.disabled = !isRtl;
         }
+        observer.observe(document.documentElement, { attributes: true });
+        observer.observe(document.body, { attributes: true });
       }
 
       function detectAndApplyDirection() {
         const html = document.documentElement;
-        const currentLang = html.getAttribute('lang') || html.lang || document.body.lang || navigator.language;
+        const currentLang = html.getAttribute('lang') || document.body.getAttribute('lang');
         setPageDirection(isRtlLanguage(currentLang));
       }
 
       const observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
-          if (mutation.type === 'attributes' && (mutation.attributeName === 'lang' || mutation.attributeName === 'dir')) {
+          if (mutation.type === 'attributes' && (mutation.attributeName === 'lang')) {
             detectAndApplyDirection();
             break;
           }
