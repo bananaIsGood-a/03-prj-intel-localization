@@ -10,6 +10,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <!-- Header / Hero Section -->
   <header>
     <div>
@@ -30,10 +32,11 @@
   </header>
 
   <!-- Timeline Cards Section -->
-  <section class="timeline-section">
+  <section class="timeline-section" id="main-content" aria-label="Intel sustainability timeline">
+    <h2 class="visually-hidden">Sustainability timeline</h2>
 
     <!-- Card 1: 1968 -->
-    <div>
+    <div tabindex="0" role="group">
       <h2>1968</h2>
       <h3>Intel Founded</h3>
       <img src="img/1.jpg" alt="Intel Founded" />
@@ -45,7 +48,7 @@
     </div>
 
     <!-- Card 2: 1971 -->
-    <div>
+    <div tabindex="0" role="group">
       <h2>1971</h2>
       <h3>First Microprocessor</h3>
       <img src="img/2.jpg" alt="First Microprocessor" />
@@ -57,7 +60,7 @@
     </div>
 
     <!-- Card 3: 1978 -->
-    <div>
+    <div tabindex="0" role="group">
       <h2>1978</h2>
       <h3>8086 Processor</h3>
       <img src="img/3.jpg" alt="8086 Processor" />
@@ -68,7 +71,7 @@
     </div>
 
     <!-- Card 4: 1985 -->
-    <div>
+    <div tabindex="0" role="group">
       <h2>1985</h2>
       <h3>386 Processor</h3>
       <img src="img/4.jpg" alt="386 Processor" />
@@ -80,7 +83,7 @@
     </div>
 
     <!-- Card 5: 2006 -->
-    <div>
+    <div tabindex="0" role="group">
       <h2>2006</h2>
       <h3>Peak GHG Emissions</h3>
       <img src="img/5.png" alt="Peak GHG Emissions" />
@@ -93,7 +96,7 @@
     </div>
 
     <!-- Card 6: 2020 -->
-    <div>
+    <div tabindex="0" role="group">
       <h2>2020</h2>
       <h3>RISE Strategy</h3>
       <img src="img/6.png" alt="RISE Strategy" />
@@ -105,7 +108,7 @@
     </div>
 
     <!-- Card 7: 2022 -->
-    <div>
+    <div tabindex="0" role="group">
       <h2>2022</h2>
       <h3>Net-Zero By 2040</h3>
       <img src="img/7.png" alt="Net-Zero By 2040" />
@@ -117,7 +120,7 @@
     </div>
 
     <!-- Card 8: 2023 -->
-    <div>
+    <div tabindex="0" role="group">
       <h2>2023</h2>
       <h3>Renewable Electricity</h3>
       <img src="img/8.png" alt="Renewable Electricity" />
@@ -129,7 +132,7 @@
     </div>
 
     <!-- Card 9: 2024 -->
-    <div>
+    <div tabindex="0" role="group">
       <h2>2024</h2>
       <h3>Sustainability Summit</h3>
       <img src="img/9.png" alt="Sustainability Summit" />
@@ -149,7 +152,7 @@
       <!-- Column 1 -->
       <div class="col-sm-4 no-transition">
         <div class="column-header">
-          <img src="img/bar-chart-line.svg" alt="RISE Strategy" class="column-icon" />
+          <img src="img/bar-chart-line.svg" alt="" aria-hidden="true" class="column-icon" />
           <h2>RISE Strategy</h2>
         </div>
         <p>
@@ -164,7 +167,7 @@
       <!-- Column 2 -->
       <div class="col-sm-4 no-transition">
         <div class="column-header">
-          <img src="img/globe.svg" alt="Commitment" class="column-icon" />
+          <img src="img/globe.svg" alt="" aria-hidden="true" class="column-icon" />
           <h2>Commitment</h2>
         </div>
         <p>
@@ -180,7 +183,7 @@
       <!-- Column 3 -->
       <div class="col-sm-4 no-transition">
         <div class="column-header">
-          <img src="img/droplet.svg" alt="Water & Waste" class="column-icon" />
+          <img src="img/droplet.svg" alt="" aria-hidden="true" class="column-icon" />
           <h2>Water &amp; Waste</h2>
         </div>
         <p>
@@ -200,7 +203,7 @@
   <section class="subscription-section">
     <div class="subscription-container">
       <div class="subscription-header">
-        <img src="img/envelope.svg" alt="Newsletter" class="subscription-icon" />
+        <img src="img/envelope.svg" alt="" aria-hidden="true" class="subscription-icon" />
         <h2>Subscribe to our Newsletter</h2>
       </div>
       <p class="subscription-description">Stay updated on Intel's latest sustainability initiatives and innovations.</p>
@@ -209,13 +212,16 @@
       <form class="subscription-form">
         <div class="row g-3">
           <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="First Name" required />
+            <label for="first-name" class="visually-hidden">First Name</label>
+            <input id="first-name" type="text" class="form-control" placeholder="First Name" required />
           </div>
           <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Last Name" required />
+            <label for="last-name" class="visually-hidden">Last Name</label>
+            <input id="last-name" type="text" class="form-control" placeholder="Last Name" required />
           </div>
           <div class="col-12">
-            <input type="email" class="form-control" placeholder="Email Address" required />
+            <label for="email-address" class="visually-hidden">Email Address</label>
+            <input id="email-address" type="email" class="form-control" placeholder="Email Address" required />
           </div>
           <div class="col-12">
             <div class="form-check">
@@ -237,34 +243,9 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-content">
-        <div class="footer-section">
-          <h3>About Intel</h3>
-          <p>Intel is committed to building world-class semiconductor products and sustainable manufacturing practices.</p>
-        </div>
         
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Careers</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Sustainability Report</a></li>
-            <li><a href="#">News &amp; Events</a></li>
-            <li><a href="#">Investor Relations</a></li>
-            <li><a href="#">Support</a></li>
-          </ul>
-        </div>
-      </div>
-      
       <div class="footer-bottom">
-        <p>&copy; 2026 Intel Corporation. All rights reserved. | Sustainability Through Innovation</p>
+        <p>&copy; 2026 Intel Corporation | All rights reserved | Sustainability Through Innovation</p>
       </div>
     </div>
   </footer>
